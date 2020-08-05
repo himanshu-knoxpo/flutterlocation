@@ -370,16 +370,16 @@ public class LocationPlugin implements MethodCallHandler, StreamHandler, PluginR
 
     public boolean checkServiceEnabled(final Result result) {
         boolean gps_enabled = false;
-        boolean network_enabled = false;
+        //boolean network_enabled = false;
 
         try {
             gps_enabled = this.locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-            network_enabled = this.locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+           // network_enabled = this.locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         } catch (Exception ex) {
             result.error("SERVICE_STATUS_ERROR", "Location service status couldn't be determined", null);
             return false;
         }
-        if (gps_enabled || network_enabled) {
+        if (gps_enabled) {
             if (result != null) {
                 result.success(1);
             } 
